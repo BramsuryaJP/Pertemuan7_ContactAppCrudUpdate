@@ -118,12 +118,14 @@ const editContact = (nameFind, name, phoneNumber, email) => {
   let newUsername, newPhoneNumber, newEmail;
 
   if (findName) {
+    // jika nama tidak diisi atau tidak diinput maka nilai nama tetap sama
     if (name === null || findName.name === name || name === ''   || name === undefined ) {
       newUsername = findName.name;
     } else {
       newUsername = name;
     }
     
+    // jika nomor telepon tidak diisi atau tidak diinput maka nilai nomor telepon tetap sama
     if (phoneNumber === null || findName.phoneNumber === phoneNumber || phoneNumber === ''  || phoneNumber === undefined ) {
       newPhoneNumber = findName.phoneNumber
     } else {
@@ -137,6 +139,7 @@ const editContact = (nameFind, name, phoneNumber, email) => {
       }
     }
   
+    // jika email tidak diisi atau tidak diinput maka nilai email tetap sama
     if (email === null || findName.email === email || email === ''  || email === undefined ) {
       newEmail = findName.email
     } else {
@@ -150,15 +153,18 @@ const editContact = (nameFind, name, phoneNumber, email) => {
       }
     }
   
+    // menyimpan nilai dari variable yang diinput
     const updateData = {
       name: newUsername,
       phoneNumber: newPhoneNumber,
       email: newEmail
     }
   
+    // menghapus data contact bersarkan nama
     const deleteCon = contacts.filter((contact) => contact.name.toLowerCase() !== nameFind.toLowerCase());
     fs.writeFileSync('data/contacts.json', JSON.stringify(deleteCon, null, 2));
   
+    // menambahkan data contact baru
     deleteCon.push(updateData);
     fs.writeFileSync('data/contacts.json', JSON.stringify(deleteCon, null, 2));
   
