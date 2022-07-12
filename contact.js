@@ -127,13 +127,27 @@ const editContact = (nameFind, name, phoneNumber, email) => {
     if (phoneNumber === null || findName.phoneNumber === phoneNumber || phoneNumber === ''  || phoneNumber === undefined ) {
       newPhoneNumber = findName.phoneNumber
     } else {
-      newPhoneNumber = phoneNumber;
+      // melakukan validasi terhadap nomor telepon
+      if(!validator.isMobilePhone(phoneNumber, 'id-ID')) {
+        console.log("Nomor Telepon Tidak Valid, Silahkan Isi Nomor Telepon yang Valid");
+        // mengembalikan nilai false jika nomor tidak valid
+        return false;
+      } else {
+        newPhoneNumber = phoneNumber;
+      }
     }
   
     if (email === null || findName.email === email || email === ''  || email === undefined ) {
       newEmail = findName.email
     } else {
-      newEmail = email
+      // melakukan validasi terhadap email
+      if(!validator.isEmail(email)) {
+        console.log("Email Tidak Valid, Silahkan Isi Email yang Valid");
+        // mengembalikan nilai false jika email tidak valid
+        return false;
+      } else {
+        newEmail = email
+      }
     }
   
     const updateData = {
