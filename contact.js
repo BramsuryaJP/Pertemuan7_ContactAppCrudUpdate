@@ -94,7 +94,7 @@ const detailContact = (name) => {
     console.log(`${ findName.name }'s Contact Detail : `);
     console.log(`Name : ${ findName.name }\nPhone Number : ${ findName.phoneNumber }\nEmail : ${ findName.email }`);
   } else {
-    console.log(`${ findName.name }'s Contact Not Found! Use Another Name`);
+    console.log(`${ name }'s Contact Not Found! Use Another Name`);
   }
 }
 
