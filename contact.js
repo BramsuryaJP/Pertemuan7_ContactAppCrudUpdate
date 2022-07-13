@@ -122,6 +122,7 @@ const editContact = (nameFind, name, phoneNumber, email) => {
     if (name === null || findName.name === name || name === ''   || name === undefined ) {
       newUsername = findName.name;
     } else {
+      // mencari nama jika ada yang sama
       const duplicate = contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase());
       if (duplicate) {
         console.log("Nama Sudah Terdaftar, Silahkan Gunakan Nama Lain");
