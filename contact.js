@@ -122,7 +122,14 @@ const editContact = (nameFind, name, phoneNumber, email) => {
     if (name === null || findName.name === name || name === ''   || name === undefined ) {
       newUsername = findName.name;
     } else {
-      newUsername = name;
+      const duplicate = contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase());
+      if (duplicate) {
+        console.log("Nama Sudah Terdaftar, Silahkan Gunakan Nama Lain");
+        // mengembalikan nilai false jika duplikat
+        return false;
+      } else {
+        newUsername = name;
+      }
     }
     
     // jika nomor telepon tidak diisi atau tidak diinput maka nilai nomor telepon tetap sama
